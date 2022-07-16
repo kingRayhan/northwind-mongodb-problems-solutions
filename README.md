@@ -60,3 +60,20 @@ db.customers.find({
 ```
 ![image](https://user-images.githubusercontent.com/7611746/179337845-6c1eaa2a-103c-45a6-90a4-c65908fef8e5.png)
 
+
+#### 7. Create a report showing the product name, unit price and quantity per unit of all products that are out of stock
+
+```js
+db.products.find({
+    UnitsInStock: {
+        $eq: '0'
+    }
+}, {
+    ProductName: 1,
+    UnitPrice: 1,
+    QuantityPerUnit: 1
+})
+```
+
+![image](https://user-images.githubusercontent.com/7611746/179338000-24cfb973-3c61-4910-8162-b9dc64970681.png)
+
