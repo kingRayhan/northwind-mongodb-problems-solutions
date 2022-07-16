@@ -18,3 +18,15 @@ db.customers.find(null, {
     Phone: 1
 })
 ```
+
+3. Create a report showing employees' first and last names and hire dates sorted from newest to oldest employee
+
+```js
+db.employees.find(null, {
+    FirstName: 1,
+    LastName: 1,
+    HireDate: 1
+}).sort({
+    HireDate: 1
+})
+```
