@@ -181,5 +181,30 @@ db.products.find({
 
 #### 8. Create a report showing the order date, shipped date, customer id, and freight of all orders placed on May 19, 1997
 ```js
-db.orders.find(null, { OrderDate:1, ShippedDate:1, CustomerID:1, Freight:1 })
+db.orders.aggregate([
+    {
+        $match: {
+            OrderDate: {
+                $exists: true
+            }
+        }
+    },
+    {
+        $project: {
+            OrderDate: {
+                $toDate: "$OrderDate"
+            },
+            ShippedDate: {
+                $toDate: "$ShippedDate"
+            },
+            CustomerID: 1,
+            Freight: {
+                $toDouble: "$Freight"
+            }
+        }
+    },
+    {
+        // TODO: Date filter
+    }
+])
 ```
