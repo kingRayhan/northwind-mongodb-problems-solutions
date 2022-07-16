@@ -77,3 +77,8 @@ db.products.find({
 
 ![image](https://user-images.githubusercontent.com/7611746/179338000-24cfb973-3c61-4910-8162-b9dc64970681.png)
 
+
+#### 8. Create a report showing the order date, shipped date, customer id, and freight of all orders placed on May 19, 1997
+```js
+db.orders.find(null, { OrderDate:1, ShippedDate:1, CustomerID:1, Freight:1 })
+```
