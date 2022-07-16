@@ -58,3 +58,5 @@ db.customers.find({
     ContactName: 1
 })
 ```
+![image](https://user-images.githubusercontent.com/7611746/179337845-6c1eaa2a-103c-45a6-90a4-c65908fef8e5.png)
+
