@@ -44,3 +44,4 @@ db.orders.find(null, {
     Freight: -1
 })
 ```
+![image](https://user-images.githubusercontent.com/7611746/179337560-2bfe467e-c3d2-4d1a-9b3a-4bb9110f3ff4.png)
