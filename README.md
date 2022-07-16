@@ -1,12 +1,12 @@
 # Northwind Problems Solutions
 
-1. Select CategoryName and Description from the Categories table sorted by CategoryName.
+#### 1. Select CategoryName and Description from the Categories table sorted by CategoryName.
 
 ```js
 db.categories.find(null, { CategoryName: 1, Description: 1  }).sort({ CategoryName: 1 })
 ```
 
-2. Select ContactName, CompanyName, ContactTitle, and Phone from the Customers table sorted by Phone.
+#### 2. Select ContactName, CompanyName, ContactTitle, and Phone from the Customers table sorted by Phone.
 
 ```js
 db.customers.find(null, {
@@ -19,7 +19,7 @@ db.customers.find(null, {
 })
 ```
 
-3. Create a report showing employees' first and last names and hire dates sorted from newest to oldest employee
+#### 3. Create a report showing employees' first and last names and hire dates sorted from newest to oldest employee
 
 ```js
 db.employees.find(null, {
@@ -31,7 +31,7 @@ db.employees.find(null, {
 })
 ```
 
-4. Create a report showing Northwind's orders sorted by Freight from most expensive to cheapest. Show OrderID, OrderDate, ShippedDate, CustomerID, and Freight.
+#### 4. Create a report showing Northwind's orders sorted by Freight from most expensive to cheapest. Show OrderID, OrderDate, ShippedDate, CustomerID, and Freight.
 
 ```js
 db.orders.find(null, {
