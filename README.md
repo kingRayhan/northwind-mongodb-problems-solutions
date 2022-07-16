@@ -30,3 +30,17 @@ db.employees.find(null, {
     HireDate: 1
 })
 ```
+
+4. Create a report showing Northwind's orders sorted by Freight from most expensive to cheapest. Show OrderID, OrderDate, ShippedDate, CustomerID, and Freight.
+
+```js
+db.orders.find(null, {
+    OrderID: 1,
+    OrderDate: 1,
+    ShippedDate: 1,
+    CustomerID: 1,
+    Freight: 1
+}).sort({
+    Freight: -1
+})
+```
