@@ -45,3 +45,16 @@ db.orders.find(null, {
 })
 ```
 ![image](https://user-images.githubusercontent.com/7611746/179337560-2bfe467e-c3d2-4d1a-9b3a-4bb9110f3ff4.png)
+
+#### 6. Create a report showing all the company names and contact names of Northwind's customers in Buenos Aires.
+
+```js
+db.customers.find({
+    City: {
+        $eq: "Buenos Aires"
+    }
+}, {
+    CompanyName: 1,
+    ContactName: 1
+})
+```
