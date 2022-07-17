@@ -180,31 +180,68 @@ db.products.find({
 
 
 #### 8. Create a report showing the order date, shipped date, customer id, and freight of all orders placed on May 19, 1997
+
 ```js
 db.orders.aggregate([
-    {
-        $match: {
-            OrderDate: {
-                $exists: true
-            }
+  {
+    '$match': {
+      '$or': [
+        {
+          'OrderDate': {
+            '$exists': true
+          }
+        }, {
+          'OrderDate': {
+            '$ne': null
+          }
         }
-    },
-    {
-        $project: {
-            OrderDate: {
-                $toDate: "$OrderDate"
-            },
-            ShippedDate: {
-                $toDate: "$ShippedDate"
-            },
-            CustomerID: 1,
-            Freight: {
-                $toDouble: "$Freight"
-            }
-        }
-    },
-    {
-        // TODO: Date filter
+      ]
     }
+  }, {
+    '$project': {
+      'OrderID': 1, 
+      'OrderDate': {
+        '$toDate': '$OrderDate'
+      }, 
+      'ShippedDate': {
+        '$toDate': '$ShippedDate'
+      }
+    }
+  }, {
+    '$project': {
+      'OrderID': 1, 
+      'OrderDate': 1, 
+      'ShippedDate': 1, 
+      'order_year': {
+        '$year': '$OrderDate'
+      }, 
+      'order_day': {
+        '$dayOfMonth': '$OrderDate'
+      }, 
+      'order_month': {
+        '$month': '$OrderDate'
+      }
+    }
+  }, {
+    '$limit': 5
+  }, {
+    '$match': {
+      '$and': [
+        {
+          'order_year': 1996
+        }, {
+          'order_day': 14
+        }, {
+          'order_month': 4
+        }
+      ]
+    }
+  }, {
+    '$project': {
+      'order_year': 0, 
+      'order_day': 0, 
+      'order_month': 0
+    }
+  }
 ])
 ```
