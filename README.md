@@ -245,3 +245,22 @@ db.orders.aggregate([
   }
 ])
 ```
+
+### 8. Create a report showing the product name, unit price and quantity per unit of all products that are out of stock
+
+```js
+db.products.aggregate([{
+ $project: {
+  ProductName: 1,
+  UnitPrice: 1,
+  QuantityPerUnit: 1,
+  UnitsInStock: {
+   $toInt: '$UnitsInStock'
+  }
+ }
+}, {
+ $match: {
+  UnitsInStock: 0
+ }
+}])
+```
